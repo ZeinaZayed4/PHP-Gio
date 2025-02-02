@@ -62,7 +62,7 @@ echo "Hello, {$firstName}!<br>";
 
 - For the constants once you define them, you can’t change or override the value.
 - Magic constants:
-  - their value can change depending where they’re used.
+    - their value can change depending where they’re used.
 
 ```php
 <?php
@@ -102,18 +102,18 @@ echo $foo, $bar;
 
 - PHP is dynamically typed or weekly typed language where you aren’t required to define the type of your variable.
 - 4 scalar types
-  - **bool** - true / false
-  - **int** - 1, 2, 3, 0, -4 (no decimal)
-  - **float** - 1.5, 0.1, -4.5
-  - **string** - “Zeina”
+    - **bool** - true / false
+    - **int** - 1, 2, 3, 0, -4 (no decimal)
+    - **float** - 1.5, 0.1, -4.5
+    - **string** - “Zeina”
 - 4 compound types
-  - **array**
-  - **object**
-  - **callable**
-  - **iterable**
+    - **array**
+    - **object**
+    - **callable**
+    - **iterable**
 - 2 special types
-  - **resource**
-  - **null**
+    - **resource**
+    - **null**
 
 ```php
 <?php
@@ -162,12 +162,12 @@ echo '<br />';
 # 6- PHP Boolean Data Type
 
 - false
-  - integers 0, -0
-  - floats 0.0, -0.0
-  - ‘’
-  - ‘0’
-  - []
-  - null
+    - integers 0, -0
+    - floats 0.0, -0.0
+    - ‘’
+    - ‘0’
+    - []
+    - null
 
 ```php
 <?php
@@ -408,8 +408,8 @@ $z = $x === $y;
 # 13- PHP Operators Part 1
 
 - Comparison operators:
-  - (==) ⇒ loose comparison.
-  - (===) ⇒ strict comparison, also check for data type.
+    - (==) ⇒ loose comparison.
+    - (===) ⇒ strict comparison, also check for data type.
 
 ```php
 // Arithmetic operators (+ - * / % **)
@@ -691,123 +691,141 @@ echo $paymentStatusDisplay;
 
 ---
 
-# 20- PHP Return, Declare \_ Tickable Statements
+# 20- PHP Return, Declare _ Tickable Statements
 
 - return
-  ```php
-  <?php
-
-  function sum(int $x, int $y)
-  {
-  	$z = $x + $y;
-  	return $z;
-  }
-
-  $x = sum(4, 8);
-
-  echo $x . '<br />'; // 12
-  echo 'Hello World!'; // Hello World!
-  ```
+    
+    ```php
+    <?php
+    
+    function sum(int $x, int $y)
+    {
+    	$z = $x + $y;
+    	return $z;
+    }
+    
+    $x = sum(4, 8);
+    
+    echo $x . '<br />'; // 12
+    echo 'Hello World!'; // Hello World!
+    ```
+    
 - declare - ticks
-  ```php
-  <?php
-
-  // declare - ticks
-  function onTick()
-  {
-  	echo 'Tick <br />';
-  }
-
-  register_tick_function('onTick');
-
-  declare(ticks = 3);
-
-  $i = 0;
-  $length = 10;
-
-  while ($i < $length) {
-  	echo $i++ . '<br />';
-  }
-  ```
-- declare - encoding
+    
+    ```php
+    <?php
+    
+    // declare - ticks
+    function onTick()
+    {
+    	echo 'Tick <br />';
+    }
+    
+    register_tick_function('onTick');
+    
+    declare(ticks = 3);
+    
+    $i = 0;
+    $length = 10;
+    
+    while ($i < $length) {
+    	echo $i++ . '<br />';
+    }
+    ```
+    
+- declare  - encoding
 - declare - strict_types
-  ```php
-  <?php
-
-  declare(strict_types=1);
-
-  function sum(int $x, int $y)
-  {
-  	return $x + $y;
-  }
-
-  echo sum('4', 8); // Fatal error
-  ```
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function sum(int $x, int $y)
+    {
+    	return $x + $y;
+    }
+    
+    echo sum('4', 8); // Fatal error
+    ```
+    
 
 # 21- How To Include Files In PHP - Include and Require
 
 - If the file doesn’t exist:
-  - include will result a warning.
-  - require will result an error and stop the script execution.
+    - include will result a warning.
+    - require will result an error and stop the script execution.
 - include:
-  ```php
-  <?php
-
-  include 'file.php';
-
-  echo 'Hello';
-  ```
-- require:
-  ```php
-  <?php
-
-  require 'file.php';
-
-  echo 'Hello';
-  ```
-- require_once
-  - file.php
+    
     ```php
     <?php
-
-    $x = 4;
-    ```
-  - index.php
-    ```php
-    <?php
-
-    require_once 'file.php';
-
-    $x++;
-
-    echo $x . '<br />'; // 5
-
-    require_once 'file.php';
-
-    echo $x . '<br />'; // 5
-
+    
+    include 'file.php';
+    
     echo 'Hello';
     ```
-- partials/nav.php
-  ```php
-  <nav>
-  	<a href="home.php">Home</a> |
-  	<a href="about.php">About</a> |
-  	<a href="contact.php">Contact</a> |
-  </nav>
-  ```
-  - index.php
+    
+- require:
+    
     ```php
     <?php
-
-    ob_start();
-    include 'partials/nav.php';
-    $nav = ob_get_clean();
-
-    $nav = str_replace('About', 'About Us', $nav);
-
-    echo $nav;
+    
+    require 'file.php';
+    
+    echo 'Hello';
     ```
+    
+- require_once
+    - file.php
+        
+        ```php
+        <?php
+        
+        $x = 4;
+        ```
+        
+    - index.php
+        
+        ```php
+        <?php
+        
+        require_once 'file.php';
+        
+        $x++;
+        
+        echo $x . '<br />'; // 5
+        
+        require_once 'file.php';
+        
+        echo $x . '<br />'; // 5
+        
+        echo 'Hello';
+        ```
+        
+- partials/nav.php
+    
+    ```php
+    <nav>
+    	<a href="home.php">Home</a> |
+    	<a href="about.php">About</a> |
+    	<a href="contact.php">Contact</a> |
+    </nav>
+    ```
+    
+    - index.php
+        
+        ```php
+        <?php
+        
+        ob_start();
+        include 'partials/nav.php';
+        $nav = ob_get_clean();
+        
+        $nav = str_replace('About', 'About Us', $nav);
+        
+        echo $nav;
+        ```
+        
 
 ---
 
@@ -862,200 +880,219 @@ function foo(): ?int
 var_dump(foo()); // NULL
 ```
 
-# 23- PHP Function Parameters - Named Arguments - Variadic Functions \_ Unpacking
+# 23- PHP Function Parameters - Named Arguments - Variadic Functions _ Unpacking
 
 - Optional parameters must be in the end.
-  ```php
-  <?php
-
-  declare(strict_types=1);
-
-  function foo(int|float $x,int|float $y)
-  {
-  	return $x * $y;
-  }
-
-  echo foo(5, 10.4);
-  ```
-  ```php
-  <?php
-
-  declare(strict_types=1);
-
-  function foo(int|float &$x,int|float $y) : int|float
-  {
-  	if ($x % 2 == 0) {
-  		$x /= 2;
-  	}
-
-  	return $x * $y;
-  }
-
-  $a = 6.0;
-  $b = 7;
-
-  echo foo($a, $b) . '<br />';
-
-  var_dump($a, $b);
-  ```
-  ```php
-  <?php
-
-  declare(strict_types=1);
-
-  function sum(...$numbers) : int|float
-  {
-  	return array_sum($numbers);
-  }
-
-  $a = 6.0;
-  $b = 7;
-
-  $numbers = [10, 20, 30, 40, 50];
-
-  echo sum($a, $b, ...$numbers) . '<br />';
-
-  ```
-  ```php
-  <?php
-
-  declare(strict_types=1);
-
-  setcookie(name: 'foo', value: 'bar', httponly: true);
-
-  function sum($x, $y) : int|float
-  {
-  	return $x + $y;
-  }
-
-  $a = 6.0;
-  $b = 7;
-
-  echo sum(x: $b, y: $a) . '<br />';
-  ```
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function foo(int|float $x,int|float $y)
+    {
+    	return $x * $y;
+    }
+    
+    echo foo(5, 10.4);
+    ```
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function foo(int|float &$x,int|float $y) : int|float
+    {
+    	if ($x % 2 == 0) {
+    		$x /= 2;
+    	}
+    	
+    	return $x * $y;
+    }
+    
+    $a = 6.0;
+    $b = 7;
+    
+    echo foo($a, $b) . '<br />';
+    
+    var_dump($a, $b);
+    ```
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function sum(...$numbers) : int|float
+    {
+    	return array_sum($numbers);
+    }
+    
+    $a = 6.0;
+    $b = 7;
+    
+    $numbers = [10, 20, 30, 40, 50];
+    
+    echo sum($a, $b, ...$numbers) . '<br />';
+    
+    ```
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    setcookie(name: 'foo', value: 'bar', httponly: true);
+    
+    function sum($x, $y) : int|float
+    {
+    	return $x + $y;
+    }
+    
+    $a = 6.0;
+    $b = 7;
+    
+    echo sum(x: $b, y: $a) . '<br />';
+    ```
+    
 
 # 24- PHP Variable Scope - Static Variables
 
 - index.php
-  ```php
-  <?php
-
-  $x = 4;
-
-  function foo()
-  {
-  	echo $GLOBALS['x'] . '<br />';
-  }
-
-  foo();
-
-  echo $x;
-
-  //include('script1.php');
-  //
-  //echo '<br />';
-  //echo $x;
-  ```
+    
+    ```php
+    <?php
+    
+    $x = 4;
+    
+    function foo()
+    {
+    	echo $GLOBALS['x'] . '<br />';
+    }
+    
+    foo();
+    
+    echo $x;
+    
+    //include('script1.php');
+    //
+    //echo '<br />';
+    //echo $x;
+    ```
+    
 - script1.php
-  ```php
-  <?php
-
-  echo $x;
-
-  $x = 8;
-  ```
+    
+    ```php
+    <?php
+    
+    echo $x;
+    
+    $x = 8;
+    ```
+    
 - index.php
-  ```php
-  <?php
+    
+    ```php
+    <?php
+    
+    function getValue()
+    {
+    	static $value = null;
+    	
+    	if ($value === null) {
+    		$value = someVeryExpensiveFunction();
+    	}
+    	return $value;
+    }
+    
+    function someVeryExpensiveFunction()
+    {
+    	sleep(2);
+    	
+    	echo 'Processing';
+    	
+    	return 10;
+    }
+    
+    echo getValue() . '<br />';
+    echo getValue() . '<br />';
+    echo getValue() . '<br />';
+    ```
+    
 
-  function getValue()
-  {
-  	static $value = null;
-
-  	if ($value === null) {
-  		$value = someVeryExpensiveFunction();
-  	}
-  	return $value;
-  }
-
-  function someVeryExpensiveFunction()
-  {
-  	sleep(2);
-
-  	echo 'Processing';
-
-  	return 10;
-  }
-
-  echo getValue() . '<br />';
-  echo getValue() . '<br />';
-  echo getValue() . '<br />';
-  ```
-
-# 25- 25- Variable, Anonymous, Callable, Closure \_ Arrow Functions
+# 25- 25- Variable, Anonymous, Callable, Closure _ Arrow Functions
 
 - Variable function:
-  ```php
-  <?php
-
-  function sum(...$numbers): int|float
-  {
-  	return array_sum($numbers);
-  }
-
-  $x = 'sum';
-
-  if (is_callable($x)) {
-  	echo $x(1, 2, 3, 4);
-  } else {
-  	echo 'Not callable';
-  }
-  ```
+    
+    ```php
+    <?php
+    
+    function sum(...$numbers): int|float
+    {
+    	return array_sum($numbers);
+    }
+    
+    $x = 'sum';
+    
+    if (is_callable($x)) {
+    	echo $x(1, 2, 3, 4);
+    } else {
+    	echo 'Not callable';
+    }
+    ```
+    
 - Anonymous function:
-  ```php
-  <?php
-
-  $x = 2;
-  $sum = function (...$numbers) use (&$x): int|float
-  {
-  	$x = 4;
-  	echo $x . '<br />';
-  	return array_sum($numbers);
-  };
-
-  echo $sum(1, 2, 3, 4) . '<br />';
-
-  echo $x;
-
-  ```
+    
+    ```php
+    <?php
+    
+    $x = 2;
+    $sum = function (...$numbers) use (&$x): int|float
+    {
+    	$x = 4;
+    	echo $x . '<br />';
+    	return array_sum($numbers);
+    };
+    
+    echo $sum(1, 2, 3, 4) . '<br />';
+    
+    echo $x;
+    
+    ```
+    
 - callable type, callback function:
-  ```php
-  <?php
-
-  $sum = function (callable $callback, int|float ...$numbers): int|float
-  {
-  	return $callback(array_sum($numbers));
-  };
-
-  echo $sum(function ($element) {
-  	return $element * 2;
-  }, 1, 2, 3, 4);
-  ```
+    
+    ```php
+    <?php
+    
+    $sum = function (callable $callback, int|float ...$numbers): int|float
+    {
+    	return $callback(array_sum($numbers));
+    };
+    
+    echo $sum(function ($element) {
+    	return $element * 2;
+    }, 1, 2, 3, 4);
+    ```
+    
 - Arrow function:
-  ```php
-  <?php
-
-  $array = [1, 2, 3, 4];
-
-  $y = 5;
-  $array2 = array_map(fn($number)  => $number * $number * ++$y, $array);
-
-  echo '<pre>';
-  print_r($array2);
-  echo '</pre>';
-
-  echo $y;
-  ```
+    
+    ```php
+    <?php
+    
+    $array = [1, 2, 3, 4];
+    
+    $y = 5;
+    $array2 = array_map(fn($number)  => $number * $number * ++$y, $array);
+    
+    echo '<pre>';
+    print_r($array2);
+    echo '</pre>';
+    
+    echo $y;
+    ```
+    
 
 ---
 
@@ -1111,179 +1148,203 @@ echo '</pre>';
 # 27- How To Work With Arrays in PHP
 
 - helpers.php
-  ```php
-  <?php
-
-  function prettyPrintArray(array $value): void
-  {
-  	echo '<pre>';
-  	print_r($value);
-  	echo '</pre>';
-  }
-  ```
+    
+    ```php
+    <?php
+    
+    function prettyPrintArray(array $value): void
+    {
+    	echo '<pre>';
+    	print_r($value);
+    	echo '</pre>';
+    }
+    ```
+    
 - array_chunk
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $items = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
-
-  prettyPrintArray(array_chunk($items, 2, true));
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $items = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+    
+    prettyPrintArray(array_chunk($items, 2, true));
+    ```
+    
 - array_combine
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array1  = ['a', 'b', 'c'];
-  $array2 = [5, 10, 15];
-
-  prettyPrintArray(array_combine($array1, $array2));
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array1  = ['a', 'b', 'c'];
+    $array2 = [5, 10, 15];
+    
+    prettyPrintArray(array_combine($array1, $array2));
+    ```
+    
 - array_filter & array_values
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-  $even = array_filter($array, fn($number) => $number % 2 === 0, ARRAY_FILTER_USE_BOTH);
-
-  $even = array_values($even);
-
-  prettyPrintArray($even);
-
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
+    $even = array_filter($array, fn($number) => $number % 2 === 0, ARRAY_FILTER_USE_BOTH);
+    
+    $even = array_values($even);
+    
+    prettyPrintArray($even);
+    
+    ```
+    
 - array_keys
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array = ['a' => 5, 'b' => 10, 'c' => 15, 'd' => 5, 'e' => 10];
-
-  $keys = array_keys($array, 10);
-
-  prettyPrintArray($keys);
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array = ['a' => 5, 'b' => 10, 'c' => 15, 'd' => 5, 'e' => 10];
+    
+    $keys = array_keys($array, 10);
+    
+    prettyPrintArray($keys);
+    ```
+    
 - array_map
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array1 = ['a' => 1, 'b' => 2, 'c' => 3];
-  $array2 = ['d' => 4, 'e' => 5, 'f' => 6];
-
-  $array = array_map(fn($number1, $number2) => $number1 * $number2, $array1, $array2);
-
-  prettyPrintArray($array);
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array1 = ['a' => 1, 'b' => 2, 'c' => 3];
+    $array2 = ['d' => 4, 'e' => 5, 'f' => 6];
+    
+    $array = array_map(fn($number1, $number2) => $number1 * $number2, $array1, $array2);
+    
+    prettyPrintArray($array);
+    ```
+    
 - array_merge
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array1 = [1, 2, 3];
-  $array2 = ['a' => 4, 'b' => 5, 'c' => 6];
-  $array3 = [7, 8, 9, 'b' => 10];
-
-  $merged = array_merge($array1, $array2, $array3);
-
-  prettyPrintArray($merged);
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array1 = [1, 2, 3];
+    $array2 = ['a' => 4, 'b' => 5, 'c' => 6];
+    $array3 = [7, 8, 9, 'b' => 10];
+    
+    $merged = array_merge($array1, $array2, $array3);
+    
+    prettyPrintArray($merged);
+    ```
+    
 - array_reduce
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $invoiceItems = [
-  	['price' => 9.99, 'qty' => 3, 'desc' => 'Item 1'],
-  	['price' => 29.99, 'qty' => 1, 'desc' => 'Item 2'],
-  	['price' => 149, 'qty' => 1, 'desc' => 'Item 3'],
-  	['price' => 14.99, 'qty' => 2, 'desc' => 'Item 4'],
-  	['price' => 4.99, 'qty' => 4, 'desc' => 'Item 5'],
-  ];
-
-  $total = array_reduce($invoiceItems,
-  	fn($sum, $item) => $sum + $item['qty'] * $item['price'],
-  	500
-  );
-
-  echo $total;
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $invoiceItems = [
+    	['price' => 9.99, 'qty' => 3, 'desc' => 'Item 1'],
+    	['price' => 29.99, 'qty' => 1, 'desc' => 'Item 2'],
+    	['price' => 149, 'qty' => 1, 'desc' => 'Item 3'],
+    	['price' => 14.99, 'qty' => 2, 'desc' => 'Item 4'],
+    	['price' => 4.99, 'qty' => 4, 'desc' => 'Item 5'],
+    ];
+    
+    $total = array_reduce($invoiceItems,
+    	fn($sum, $item) => $sum + $item['qty'] * $item['price'],
+    	500
+    );
+    
+    echo $total;
+    ```
+    
 - array_search
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array = ['a', 'b', 'c', 'D', 'E', 'ab', 'bc', 'cd', 'b', 'd'];
-
-  $key = array_search('a', $array);
-
-  if (in_array('a', $array)) {
-  	echo 'Letter found!';
-  }
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array = ['a', 'b', 'c', 'D', 'E', 'ab', 'bc', 'cd', 'b', 'd'];
+    
+    $key = array_search('a', $array);
+    
+    if (in_array('a', $array)) {
+    	echo 'Letter found!';
+    }
+    ```
+    
 - array_diff
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
-  $array2 = ['d' => 4, 'g' => 5, 'i' => 6, 'j' => 7, 'k' => 8];
-  $array3 = ['l' => 3, 'm' => 9, 'n' => 10];
-
-  prettyPrintArray(array_diff($array1, $array2, $array3));
-
-  prettyPrintArray(array_diff_assoc($array1, $array2, $array3));
-
-  prettyPrintArray(array_diff_key($array1, $array2, $array3));
-
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array1 = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5];
+    $array2 = ['d' => 4, 'g' => 5, 'i' => 6, 'j' => 7, 'k' => 8];
+    $array3 = ['l' => 3, 'm' => 9, 'n' => 10];
+    
+    prettyPrintArray(array_diff($array1, $array2, $array3));
+    
+    prettyPrintArray(array_diff_assoc($array1, $array2, $array3));
+    
+    prettyPrintArray(array_diff_key($array1, $array2, $array3));
+    
+    ```
+    
 - sort arrays
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array = ['d' => 3, 'b' => 1, 'c' => 4, 'a' => 2];
-
-  //prettyPrintArray($array);
-  //
-  //// sort array by values
-  //asort($array);
-  //
-  //prettyPrintArray($array);
-  //
-  //ksort($array);
-  //
-  //prettyPrintArray($array);
-
-  usort($array, fn($a, $b) => $a <=> $b);
-
-  prettyPrintArray($array);
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array = ['d' => 3, 'b' => 1, 'c' => 4, 'a' => 2];
+    
+    //prettyPrintArray($array);
+    //
+    //// sort array by values
+    //asort($array);
+    //
+    //prettyPrintArray($array);
+    //
+    //ksort($array);
+    //
+    //prettyPrintArray($array);
+    
+    usort($array, fn($a, $b) => $a <=> $b);
+    
+    prettyPrintArray($array);
+    ```
+    
 - list
-  ```php
-  <?php
-
-  require 'helpers.php';
-
-  $array = [1, 2, [3, 4]];
-
-  //list($a, $b, $c, $d) = $array;
-  [$a, $b, [$c, $d]] = $array;
-
-  echo $a . ' ' . $b . ' ' . $c . ' ' . $d;
-  ```
+    
+    ```php
+    <?php
+    
+    require 'helpers.php';
+    
+    $array = [1, 2, [3, 4]];
+    
+    //list($a, $b, $c, $d) = $array;
+    [$a, $b, [$c, $d]] = $array;
+    
+    echo $a . ' ' . $b . ' ' . $c . ' ' . $d;
+    ```
+    
 
 ---
 
@@ -1312,7 +1373,7 @@ var_dump(E_ALL);
 function errorHandler(int $type, string $msg, ?string $file = null, ?int $line = null)
 {
 	echo $type . ': ' . $msg . ' in ' . $file . ' on line ' . $line;
-
+	
 	exit();
 }
 
@@ -1328,15 +1389,356 @@ echo $x;
 # 30- Basic Apache Webserver Configuration & Virtual Hosts
 
 - .htaccess
-  ```php
-  <IfModule mod_rewirte.c>
-      RewriteEngine on
-
-      RewriteCond %{REQUEST_FILENAME} !-d
-      RewriteCond %{REQUEST_FILENAME} !-f
-
-      RewriteRule ^ index.php [L]
-  </IfModule>
-  ```
+    
+    ```php
+    <IfModule mod_rewirte.c>
+        RewriteEngine on
+    
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+    
+        RewriteRule ^ index.php [L]
+    </IfModule>
+    ```
+    
 
 ---
+
+# 31- Working With File System in PHP
+
+```php
+<?php
+
+//$dir = scandir(__DIR__);
+//
+//var_dump(is_file($dir[3]));
+
+//mkdir('foo');
+//rmdir('foo');
+
+//mkdir('foo/bar', recursive: true);
+//rmdir('foo/bar'); // will delete the bar dir only
+//rmdir('foo');
+
+//if (file_exists('foo.txt')) {
+//	echo filesize('foo.txt') . '<br />';
+//
+//	file_put_contents('foo.txt', 'Hello world!');
+//
+//	clearstatcache();
+//	echo filesize('foo.txt') . '<br />';
+//} else {
+//	echo 'File not found.';
+//}
+
+if (!file_exists('foo.txt')) {
+	echo 'File not found.';
+	return;
+}
+
+$file = fopen('foo.txt', 'r');
+
+while (($line = fgets($file)) !== false) {
+	echo $line . '<br />';
+}
+
+fclose($file);
+
+$file2 = fopen('foobar.txt', 'r');
+
+while (($line = fgetcsv($file2)) !== false) {
+	print_r($line);
+}
+fclose($file2);
+
+echo '<br />';
+
+$content = file_get_contents('foo.txt');
+echo $content;
+
+//file_put_contents('bar.txt', 'hello'); // it overrides the content
+//file_put_contents('bar.txt', 'world', FILE_APPEND);
+
+// delete file
+//unlink('bar.txt');
+
+copy('foo.txt', 'bar.txt');
+unlink('bar.txt');
+
+// move the file instead of copying it for (file and directory)
+rename('foo.txt', 'bar.txt');
+
+```
+
+---
+
+# 32- Mini Exercise Project Overview
+
+# 33- Building Small Part of The App With Procedural PHP
+
+- app/App.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function getTransactionFiles(string $dirPath): array
+    {
+    	$files = [];
+    	
+    	foreach (scandir($dirPath) as $file) {
+    		if (is_dir($file)) {
+    			continue;
+    		}
+    		
+    		$files[] = $dirPath . $file;
+    	}
+    	
+    	return $files;
+    }
+    
+    function getTransactions(string $fileName, ?callable $transactionHandler = null): array
+    {
+    	if (! file_exists($fileName)) {
+    		trigger_error('File "' .$fileName . '" does not exist', E_USER_ERROR);
+    	}
+    	
+    	$file = fopen($fileName, 'r');
+    	
+    	fgetcsv($file);
+    	
+    	$transactions = [];
+    	
+    	while (($transaction = fgetcsv($file)) !== false) {
+    		if ($transactionHandler !== null) {
+    			$transaction = $transactionHandler($transaction);
+    		}
+    		$transactions[] = $transaction;
+    	}
+    	
+    	return $transactions;
+    }
+    
+    function extractTransaction(array $transactionRaw): array
+    {
+    	[$date, $checkNumber, $description, $amount] = $transactionRaw;
+    	
+    	$amount = (float) str_replace(['$', ','] , '', $amount);
+    	
+    	return [
+    		'date' => $date,
+    		'checkNumber' => $checkNumber,
+    		'description' => $description,
+    		'amount' => $amount
+    	];
+    }
+    
+    function calculateTotals(array $transactions): array
+    {
+    	$totals = ['netTotal' => 0, 'totalIncome' => 0, 'totalExpense' => 0];
+    	
+    	foreach ($transactions as $transaction) {
+    		$totals['netTotal'] += $transaction['amount'];
+    		
+    		if ($transaction['amount'] >= 0) {
+    			$totals['totalIncome'] += $transaction['amount'];
+    		} else {
+    			$totals['totalExpense'] += $transaction['amount'];
+    		}
+    	}
+    	
+    	return $totals;
+    }
+    
+    ```
+    
+- app/helpers.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    function formatDollarAmount(float $amount): string
+    {
+    	$isNegative = $amount < 0;
+    	
+    	return ($isNegative ? '-' : '') . '$' . number_format(abs($amount), 2);
+    }
+    
+    function formatDate(string $date): string
+    {
+    	return date('M j, Y', strtotime($date));
+    }
+    
+    ```
+    
+- public/index.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
+    
+    define('APP_PATH', $root . 'app' . DIRECTORY_SEPARATOR);
+    define('FILES_PATH', $root . 'transaction_files' . DIRECTORY_SEPARATOR);
+    define('VIEWS_PATH', $root . 'views' . DIRECTORY_SEPARATOR);
+    
+    require APP_PATH . 'App.php';
+    require APP_PATH . 'helpers.php';
+    
+    $files = getTransactionFiles(FILES_PATH);
+    
+    $transactions = [];
+    foreach ($files as $file) {
+    	$transactions = array_merge($transactions, getTransactions($file, 'extractTransaction'));
+    }
+    
+    $totals = calculateTotals($transactions);
+    
+    require VIEWS_PATH . 'transactions.php';
+    
+    ```
+    
+- transaction_files/sample_1.csv
+    
+    ```php
+    Date,Check #,Description,Amount
+    01/04/2021,7777,Transaction 1,"$150.43"
+    01/05/2021,,Transaction 2,"$700.25"
+    01/06/2021,,Transaction 3,"-$1,303.97"
+    01/07/2021,,Transaction 4,"$46.78"
+    01/08/2021,,Transaction 5,"$816.87"
+    01/11/2021,1934,Transaction 6,"-$1,002.53"
+    01/12/2021,7307,Transaction 7,"$532.22"
+    01/13/2021,1352,Transaction 8,"-$704.59"
+    01/14/2021,,Transaction 9,"$98.04"
+    01/15/2021,,Transaction 10,"-$204.56"
+    01/25/2021,,Transaction 11,"$1,056.27"
+    01/26/2021,,Transaction 12,"$550.10"
+    01/27/2021,,Transaction 13,"-$825.77"
+    01/28/2021,4250,Transaction 14,"$212.68"
+    01/29/2021,,Transaction 15,"$195.68"
+    02/02/2021,9915,Transaction 16,"-$463.75"
+    02/03/2021,,Transaction 17,"$78.02"
+    02/04/2021,,Transaction 18,"$268.81"
+    02/05/2021,,Transaction 19,"$1,360.55"
+    02/08/2021,,Transaction 20,"-$594.46"
+    02/09/2021,9125,Transaction 21,"$467.39"
+    02/10/2021,,Transaction 22,"$39.49"
+    02/11/2021,7929,Transaction 23,"-$81.87"
+    02/12/2021,,Transaction 24,"$255.64"
+    02/12/2021,,Transaction 25,"$13.51"
+    ```
+    
+- views/transactions.php
+    
+    ```php
+    <!DOCTYPE html>
+    <html lang="en">
+    	<head>
+    		<title>Transactions</title>
+    		<style>
+    			table {
+    				width: 100%;
+    				border-collapse: collapse;
+    				text-align: center;
+    			}
+    	
+    			table tr th, table tr td {
+    				padding: 5px;
+    				border: 1px #eee solid;
+    			}
+    	
+    			tfoot tr th, tfoot tr td {
+    				font-size: 20px;
+    			}
+    	
+    			tfoot tr th {
+    				text-align: right;
+    			}
+    		</style>
+    	</head>
+    	<body>
+    		<table>
+    			<thead>
+    				<tr>
+    					<th>Date</th>
+    					<th>Check #</th>
+    					<th>Description</th>
+    					<th>Amount</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+                    <?php if (! empty($transactions)): ?>
+                        <?php foreach ($transactions as $transaction): ?>
+                            <tr>
+                                <td><?= formatDate($transaction['date']) ?></td>
+                                <td><?= $transaction['checkNumber'] ?></td>
+                                <td><?= $transaction['description'] ?></td>
+                                <td>
+                                    <?php if ($transaction['amount'] < 0): ?>
+                                        <span style="color: red">
+                                            <?= formatDollarAmount($transaction['amount']) ?>
+                                        </span>
+                                    <?php elseif ($transaction['amount'] > 0): ?>
+                                        <span style="color: green">
+                                            <?= formatDollarAmount($transaction['amount']) ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+    			</tbody>
+    			<tfoot>
+    				<tr>
+    					<th colspan="3">Total Income:</th>
+    					<td><?= formatDollarAmount($totals['totalIncome'] ?? 0) ?></td>
+    				</tr>
+    				<tr>
+    					<th colspan="3">Total Expense:</th>
+    					<td><?= formatDollarAmount($totals['totalExpense'] ?? 0) ?></td>
+    				</tr>
+    				<tr>
+    					<th colspan="3">Net Total:</th>
+    					<td><?= formatDollarAmount($totals['netTotal'] ?? 0) ?></td>
+    				</tr>
+    			</tfoot>
+    		</table>
+    	</body>
+    </html>
+    ```
+    
+
+---
+
+# **Section 2 - OOP**
+
+---
+
+# 34- Intro To Object Oriented Programming
+
+- variables ⇒ **properties**.
+- functions ⇒ **methods**.
+- A **class** is a blueprint.
+- An **object** is something you build from that blueprint. (instance of a class)
+- **Why OOP?**
+    - Better code structure.
+    - Easier to maintain.
+    - Modular & extendable.
+    - Polymorphism flexibility.
+    - On demand.
+- OOP(paradigm) ≠ MVC(pattern).
+- **Principles of OOP:**
+    - Encapsulation.
+    - Inheritance.
+    - Abstraction.
+    - Polymorphism.
+
+# 35- PHP Docker Tutorial - Nginx - PHPFM vs Apache
+
+# 36-
