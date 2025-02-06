@@ -1741,4 +1741,344 @@ rename('foo.txt', 'bar.txt');
 
 # 35- PHP Docker Tutorial - Nginx - PHPFM vs Apache
 
-# 36-
+# 36- PHP Classes & Objects - Typed Properties - Constructors & Destructors
+
+- access modifiers:
+    - public.
+    - private.
+    - protected.
+- Constructor method is a special function “magic method” that will be called whenever a new instance is created.
+- Transaction.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    class Transaction
+    {
+    	private float $amount;
+    	private string $description;
+    	
+    	public function __construct(float $amount, string $description)
+    	{
+    		$this->amount = $amount;
+    		$this->description = $description;
+    	}
+    	
+    	public function addTax(float $rate): Transaction
+    	{
+    		$this->amount += $this->amount * $rate / 100;
+    		return $this;
+    	}
+    	
+    	public function applyDiscount(float $rate): Transaction
+    	{
+    		$this->amount -= $this->amount * $rate / 100;
+    		return $this;
+    	}
+    	
+    	public function getAmount(): float
+    	{
+    		return $this->amount;
+    	}
+    	
+    	public function __destruct()
+    	{
+    		echo 'Destruct ' . $this->description . '<br />';
+    	}
+    }
+    
+    ```
+    
+- index.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    require 'Transaction.php';
+    
+    $class = 'Transaction';
+    
+    $amount = (new $class(100, 'Transaction 1'))
+    			->addTax(8)
+    			->applyDiscount(10)
+    			->getAmount();
+    
+    var_dump($amount);
+    echo '<br />';
+    
+    $obj = new \stdClass();
+    
+    $obj->a = 1;
+    $obj->b = 2;
+    
+    var_dump($obj);
+    echo '<br />';
+    
+    $arr = [1, 2, 3];
+    $obj1 = (object) $arr;
+    
+    var_dump($obj1->{1});
+    echo '<br />';
+    
+    $obj2 = (object) 1;
+    var_dump($obj2);
+    echo '<br />';
+    var_dump($obj2->scalar);
+    
+    ```
+    
+
+# 37- Constructor Property Promotion - Nullsafe Operator
+
+- Transaction.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    class Transaction
+    {
+    	private ?Customer $customer = null;
+    	
+    	public function __construct(
+    		private float $amount,
+    		private string $description
+    	)
+    	{
+    	}
+    	
+    	/**
+    	 * @return Customer|null
+    	 */
+    	public function getCustomer(): ?Customer
+    	{
+    		return $this->customer;
+    	}
+    }
+    
+    ```
+    
+- Customer.php
+    
+    ```php
+    <?php
+    
+    class Customer
+    {
+    	private ?PaymentProfile $paymentProfile = null;
+    	
+    	/**
+    	 * @return PaymentProfile|null
+    	 */
+    	public function getPaymentProfile(): ?PaymentProfile
+    	{
+    		return $this->paymentProfile;
+    	}
+    }
+    ```
+    
+- PaymentProfile.php
+    
+    ```php
+    <?php
+    
+    class PaymentProfile
+    {
+    	public int $id;
+    	
+    	public function __construct()
+    	{
+    		$this->id = rand();
+    	}
+    }
+    ```
+    
+- index.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    require 'PaymentProfile.php';
+    require 'Customer.php';
+    require 'Transaction.php';
+    
+    $transaction = new Transaction(5, 'test');
+    
+    //echo $transaction->getCustomer()?->getPaymentProfile()?->id ?? 'foo';
+    
+    $profileId = null;
+    
+    if ($customer = $transaction->getCustomer()) {
+    	if ($paymentProfile = $transaction->getPaymentProfile()) {
+    		$profileId  = $paymentProfile->id;
+    	}
+    }
+    
+    echo $profileId;
+    
+    ```
+    
+
+# 38- PHP Namespaces Tutorial
+
+- PaymentGateway/Paddel/Transaction.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    namespace Paddle;
+    
+    class Transaction
+    {
+    	public function __construct()
+    	{
+    		var_dump(new CustomerProfile());
+    	}
+    }
+    ```
+    
+- PaymentGateway/Paddel/CustomerProfile.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    namespace Paddle;
+    
+    class CustomerProfile
+    {
+    	
+    }
+    ```
+    
+- PaymentGateway/Stripe/Transaction.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    namespace Stripe;
+    
+    class Transaction
+    {
+    
+    }
+    
+    ```
+    
+- index.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    require_once 'PaymentGateway/Stripe/Transaction.php';
+    require_once 'PaymentGateway/Paddle/Transaction.php';
+    require_once 'PaymentGateway/Paddle/CustomerProfile.php';
+    
+    use Paddle\{Transaction, CustomerProfile};
+    use Stripe\Transaction as StripeTransaction;
+    
+    $paddleTransaction = new Transaction();
+    $stripeTransaction = new StripeTransaction();
+    $paddleCustomerProfile = new CustomerProfile();
+    
+    var_dump($paddleCustomerProfile, $paddleTransaction, $stripeTransaction);
+    
+    ```
+    
+
+# 39- PHP Coding Standards, Autoloading (PSR-4) & Composer
+
+[https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP39](https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP39)
+
+# 40- Object Oriented PHP - Class Constants
+
+[https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP40](https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP40)
+
+# 41- Static Properties & Methods in Object Oriented PHP
+
+[https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP41](https://github.com/ZeinaZayed4/PHP-Gio/tree/master/EP41)
+
+# 42- PHP - Encapsulation & Abstraction
+
+- app\PaymentGateway\Paddle\Transaction.php
+    
+    ```php
+    <?php
+    
+    declare(strict_types=1);
+    
+    namespace App\PaymentGateway\Paddle;
+    
+    class Transaction
+    {
+    	private float $amount;
+    
+    	public function __construct(float $amount)
+    	{
+    		$this->amount = $amount;
+    	}
+    	
+    	public function copyFrom(Transaction $transaction)
+    	{
+    		var_dump($transaction->amount, $transaction->sendEmail());
+    	}
+    	
+    	public function process(): void
+    	{
+    		echo 'Processing $' . $this->amount . ' transaction.';
+    		
+    		$this->generateReceipt();
+    		
+    //		$this->sendEmail();
+    	}
+    	
+    	private function generateReceipt()
+    	{
+    	}
+    	
+    	private function sendEmail(): bool
+    	{
+    		return true;
+    	}
+    }
+    ```
+    
+- index.php
+    
+    ```php
+    <?php
+    
+    use App\PaymentGateway\Paddle\Transaction;
+    
+    require_once __DIR__ . '/vendor/autoload.php';
+    
+    $transaction = new Transaction(25);
+    
+    $transaction->copyFrom(new Transaction(100));
+    
+    echo '<br />';
+    
+    $transaction->process();
+    
+    ```
+    
+
+# 43- PHP - Inheritance Explained
+
+```php
+
+```
